@@ -1,0 +1,10 @@
+C:\Users\Helena\source\repos\hashtables\hashtables\bin\Debug\hashtables.exe.config
+C:\Users\Helena\source\repos\hashtables\hashtables\bin\Debug\hashtables.exe
+C:\Users\Helena\source\repos\hashtables\hashtables\bin\Debug\hashtables.pdb
+C:\Users\Helena\source\repos\hashtables\hashtables\obj\Debug\hashtables.csprojAssemblyReference.cache
+C:\Users\Helena\source\repos\hashtables\hashtables\obj\Debug\hashtables.Form1.resources
+C:\Users\Helena\source\repos\hashtables\hashtables\obj\Debug\hashtables.Properties.Resources.resources
+C:\Users\Helena\source\repos\hashtables\hashtables\obj\Debug\hashtables.csproj.GenerateResource.cache
+C:\Users\Helena\source\repos\hashtables\hashtables\obj\Debug\hashtables.csproj.CoreCompileInputs.cache
+C:\Users\Helena\source\repos\hashtables\hashtables\obj\Debug\hashtables.exe
+C:\Users\Helena\source\repos\hashtables\hashtables\obj\Debug\hashtables.pdb
