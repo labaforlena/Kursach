@@ -77,7 +77,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="JSONParser.cs" />
     <Compile Include="Connection.cs" />
     <Compile Include="FormAtackFort.cs">
       <SubType>Form</SubType>

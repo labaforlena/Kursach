@@ -37,6 +37,8 @@ namespace hashtables
         }
 
 
+
+
         //Выгружает всю инфу про перса из БД, вызывать при входе
         public static void getFullDB(string login)
         {
@@ -71,6 +73,21 @@ namespace hashtables
                 //По очереди присваивать строкам из внутренней бд значения reader[i]
             }
             conn.Close();
+        }
+
+
+        public static string getJSONItems(string login)
+        {
+            MySqlConnection conn = GetDBConnection();
+            conn.Open();
+
+            string sql = "SELECT Items FROM test WHERE login ='" + login + "';"; //проверить названия колонок в таблице
+            MySqlCommand command = new MySqlCommand(sql, conn);
+
+            string answer = command.ExecuteScalar().ToString();//не уверен что JSON можно так превращать в стринг 
+            conn.Close();
+
+            return answer;
         }
 
 
