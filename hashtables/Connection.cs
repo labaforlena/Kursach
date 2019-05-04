@@ -25,6 +25,8 @@ namespace hashtables
             return conn;
         }
 
+
+        //Возможно сделать перегрузку для каждой колонки
         public static void updDB()
         {
             MySqlConnection conn = GetDBConnection();
@@ -34,13 +36,40 @@ namespace hashtables
             conn.Close();
         }
 
-        public static void getDB()
+
+        //Выгружает всю инфу про перса из БД, вызывать при входе
+        public static void getFullDB(string login)
         {
             MySqlConnection conn = GetDBConnection();
             conn.Open();
 
+            string sql = "SELECT * FROM test WHERE login ='" + login + "';"; //проверить названия колонок в таблице
+            MySqlCommand command = new MySqlCommand(sql, conn);
 
-            //Get Info
+            MySqlDataReader reader = command.ExecuteReader();
+
+            while (reader.Read())
+            {
+                //По очереди присваивать строкам из внутренней бд значения reader[i]
+            }
+            conn.Close();
+        }
+
+        //Такая же но  по ID
+        public static void getFullDB(int ID)
+        {
+            MySqlConnection conn = GetDBConnection();
+            conn.Open();
+
+            string sql = "SELECT * FROM test WHERE ID ='" + ID + "';"; //проверить названия колонок в таблице
+            MySqlCommand command = new MySqlCommand(sql, conn);
+
+            MySqlDataReader reader = command.ExecuteReader();
+
+            while (reader.Read())
+            {
+                //По очереди присваивать строкам из внутренней бд значения reader[i]
+            }
             conn.Close();
         }
 
@@ -64,5 +93,7 @@ namespace hashtables
             conn.Close();
             return false;
         }
+
+
     }
 }
