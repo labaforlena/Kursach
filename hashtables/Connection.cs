@@ -27,12 +27,41 @@ namespace hashtables
 
         public static void updDB()
         {
+            MySqlConnection conn = GetDBConnection();
+            conn.Open();
 
+            //Update changed staff
+            conn.Close();
         }
 
         public static void getDB()
         {
+            MySqlConnection conn = GetDBConnection();
+            conn.Open();
 
+            //Get Info
+            conn.Close();
+        }
+
+
+        //Возвращает бул тру если логин и парль правильные
+        public static bool login(string login, string pass)
+        {
+            MySqlConnection conn = GetDBConnection();
+            conn.Open();
+
+            string sql = "SELECT password FROM test WHERE login ='" + login + "';"; //проверить названия колонок в таблице
+            MySqlCommand command = new MySqlCommand(sql, conn);
+
+            
+
+            if (pass == command.ExecuteScalar().ToString())
+            {
+                return true;
+            }
+
+            conn.Close();
+            return false;
         }
     }
 }
