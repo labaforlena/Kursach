@@ -39,6 +39,7 @@ namespace hashtables
             MySqlConnection conn = GetDBConnection();
             conn.Open();
 
+<<<<<<< HEAD
             //Get Info
             conn.Close();
         }
@@ -62,6 +63,10 @@ namespace hashtables
 
             conn.Close();
             return false;
+=======
+            //Update changed staff
+            conn.Close();
+>>>>>>> c940ef62717d7f59265dfa76037f5f5fc2934c55
         }
     }
 }
