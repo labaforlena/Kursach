@@ -27,12 +27,20 @@ namespace hashtables
 
         public static void updDB()
         {
+            MySqlConnection conn = GetDBConnection();
+            conn.Open();
 
+            //Update changed staff
+            conn.Close();
         }
 
         public static void getDB()
         {
+            MySqlConnection conn = GetDBConnection();
+            conn.Open();
 
+            //Update changed staff
+            conn.Close();
         }
     }
 }
