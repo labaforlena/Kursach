@@ -45,7 +45,7 @@ namespace hashtables
             MySqlConnection conn = GetDBConnection();
             conn.Open();
 
-            string sql = "SELECT * FROM test WHERE login ='" + login + "';"; //проверить названия колонок в таблице
+            string sql = "SELECT * FROM User WHERE login ='" + login + "';"; //проверить названия колонок в таблице
             MySqlCommand command = new MySqlCommand(sql, conn);
 
             MySqlDataReader reader = command.ExecuteReader();
@@ -63,7 +63,7 @@ namespace hashtables
             MySqlConnection conn = GetDBConnection();
             conn.Open();
 
-            string sql = "SELECT * FROM test WHERE ID ='" + ID + "';"; //проверить названия колонок в таблице
+            string sql = "SELECT * FROM User WHERE ID ='" + ID + "';"; //проверить названия колонок в таблице
             MySqlCommand command = new MySqlCommand(sql, conn);
 
             MySqlDataReader reader = command.ExecuteReader();
@@ -76,15 +76,15 @@ namespace hashtables
         }
 
 
-        public static string getJSONItems(string login)
+        public static object getJSONItemsHeld(string login)
         {
             MySqlConnection conn = GetDBConnection();
             conn.Open();
 
-            string sql = "SELECT Items FROM test WHERE login ='" + login + "';"; //проверить названия колонок в таблице
+            string sql = "SELECT ItemsHeldId FROM User WHERE login ='" + login + "';"; //проверить названия колонок в таблице
             MySqlCommand command = new MySqlCommand(sql, conn);
 
-            string answer = command.ExecuteScalar().ToString();//не уверен что JSON можно так превращать в стринг 
+            object answer = command.ExecuteScalar();//В теории это будет JSON объект
             conn.Close();
 
             return answer;
@@ -97,7 +97,7 @@ namespace hashtables
             MySqlConnection conn = GetDBConnection();
             conn.Open();
 
-            string sql = "SELECT password FROM test WHERE login ='" + login + "';"; //проверить названия колонок в таблице
+            string sql = "SELECT password FROM User WHERE login ='" + login + "';"; //проверить названия колонок в таблице
             MySqlCommand command = new MySqlCommand(sql, conn);
 
             

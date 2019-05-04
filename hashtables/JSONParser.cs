@@ -8,9 +8,14 @@ namespace hashtables
 {
     class JSONParser
     {
-        public static int[] jsonToIntArr()
+
+        public static int[] jsonToIntArr(object JSON)
         {
-            int[] convertedArr = new int[] { 1, 2 };
+            string jsonStr = Convert.ToString(JSON);
+            int[] convertedArr;
+                
+            //магия
+            
 
 
             return convertedArr;
