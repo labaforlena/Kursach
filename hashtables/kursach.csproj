@@ -12,6 +12,7 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -24,7 +25,6 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -77,6 +77,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="User.cs" />
     <Compile Include="JSONParser.cs" />
     <Compile Include="Connection.cs" />
     <Compile Include="FormAtackFort.cs">
@@ -117,10 +118,10 @@
     <Compile Include="FormStartQuest.Designer.cs">
       <DependentUpon>FormStartQuest.cs</DependentUpon>
     </Compile>
-    <Compile Include="user_infoDataSet.Designer.cs">
+    <Compile Include="userInfoDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>user_infoDataSet.xsd</DependentUpon>
+      <DependentUpon>userInfoDataSet.xsd</DependentUpon>
     </Compile>
     <EmbeddedResource Include="FormAtackFort.resx">
       <DependentUpon>FormAtackFort.cs</DependentUpon>
@@ -154,20 +155,22 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="user_infoDataSet.xsc">
-      <DependentUpon>user_infoDataSet.xsd</DependentUpon>
+    <None Include="userInfoDataSet.xsc">
+      <DependentUpon>userInfoDataSet.xsd</DependentUpon>
     </None>
-    <None Include="user_infoDataSet.xsd">
+    <None Include="userInfoDataSet.xsd">
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>user_infoDataSet.Designer.cs</LastGenOutput>
+      <LastGenOutput>userInfoDataSet.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="user_infoDataSet.xss">
-      <DependentUpon>user_infoDataSet.xsd</DependentUpon>
+    <None Include="userInfoDataSet.xss">
+      <DependentUpon>userInfoDataSet.xsd</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Screenshot_1.png" />
@@ -182,6 +185,13 @@
     <Content Include="Properties\user_info_log.ldf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>user_info.mdf</DependentUpon>
+    </Content>
+    <Content Include="userInfo.mdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="userInfo_log.ldf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DependentUpon>userInfo.mdf</DependentUpon>
     </Content>
   </ItemGroup>
   <ItemGroup>

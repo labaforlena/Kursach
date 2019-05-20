@@ -29,7 +29,7 @@ namespace hashtables
             FormUser formUser = new FormUser();
             formUser.Show();
             Close();
-
+           // formUser.labelLoginCount.Text 
         }
         //btnClose
         private void button1_Click(object sender, EventArgs e)

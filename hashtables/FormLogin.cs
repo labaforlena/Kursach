@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -16,64 +17,99 @@ namespace hashtables
         public FormLogin()
         {
             InitializeComponent();
-        }
 
-        private void btnExit_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
+    }
 
+    public static string dbUsersPath = "C:\\Users\\Helena\\Documents\\GitHub\\Kursach\\hashtables\\userInfo.mdf";
+        public static string dbUsersConnectionString = "Data Source = " + dbUsersPath;
+
+
+
+
+        //static void TryCreateTable()
+        //{
+        //    using (SqlConnection con = new SqlConnection(hashtables.Properties.Settings.Default.userInfoConnectionString))
+        //    {
+        //        con.Open();
+        //        try
+        //        {
+        //            using (SqlCommand command = new SqlCommand(
+        //                "CREATE TABLE Users (login TEXT, password VARCHAR, HP INT)", con))
+        //            {
+        //                command.ExecuteNonQuery();
+        //            }
+        //        }
+        //        catch
+        //        {
+        //            Console.WriteLine("Table not created.");
+        //        }
+        //    }
+        //}
+
+        static internal User currentUser = new User();
+        string login;
+        string password;
         Dictionary<string, string> new_user = new Dictionary<string, string>();
-         string login;
-         string password;
+        
 
-
-        public static void addUser(ref Dictionary<string, string> new_user, string login, string password)
+        private void btnEnter_Click(object sender, EventArgs e)
         {
-
             if (login == null)
             {
                 Console.WriteLine("pls enter login");
             }
-            else if (login != null)
+            else if (login != null && password == null)
             {
-                if (password == null)
-                {
-                    Console.WriteLine("pls enter paswrd");
-                }
+                Console.WriteLine("pls enter paswrd");
 
             }
-            else if (login != null)
+            else if (login != null && password != null)
             {
-                if (password != null)
-                {
-                    new_user.Add(login, password);
-                    Console.WriteLine("login:" + login + "  " + "password:" + password);
-                }
+                currentUser.login = login;
+                Console.WriteLine("login:" + login + "  " + "password:" + password);
+
+                FormLogin formLogin = new FormLogin();
+                formLogin.Hide();
+
+                FormStart formStart = new FormStart();
+                formStart.Show();
             }
-                
 
 
-           
- 
-
-                
-            
-        }
-
-
-       
-        FormStart formEnter = new FormStart();
-        private void btnEnter_Click(object sender, EventArgs e)
-        {
-            Hide();
-            
-            FormStart formEnter = new FormStart();
-            formEnter.Show();
+            /*
             addUser(ref new_user, login, password);
-        }
+            FormUser formUser = new FormUser();
+            formUser.labelLoginCount.Text = login;
 
-        
+
+
+               // Tr  yCreateTable();
+
+            
+               // Console.WriteLine("table exists");
+          using (SqlConnection con = new SqlConnection(hashtables.Properties.Settings.Default.userInfoConnectionString))
+                {
+                    con.Open();
+                    try
+                    {
+                    using (SqlCommand command = new SqlCommand(
+                    "INSERT INTO Users (@login, @password) VALUES", con))
+                    {
+                        command.Parameters.Add(new SqlParameter("login", login));
+                        command.Parameters.Add(new SqlParameter("password", password));
+                        command.ExecuteNonQuery();
+                    }
+                     }
+                    catch
+                    {
+                        Console.WriteLine("Count not insert.");
+                    }
+                }
+            
+            */
+
+        }
+             
 
         private void textBoxLogin_TextChanged(object sender, EventArgs e)
         {
@@ -86,10 +122,11 @@ namespace hashtables
             password = textBoxPassword.Text;
         }
 
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
 
     }
-
     
-
-
 }

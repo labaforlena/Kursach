@@ -9,16 +9,16 @@ namespace hashtables
     class JSONParser
     {
 
-        public static int[] jsonToIntArr(object JSON)
-        {
-            string jsonStr = Convert.ToString(JSON);
-            int[] convertedArr;
+        //public static int[] jsonToIntArr(object JSON)
+        //{
+        //    string jsonStr = Convert.ToString(JSON);
+        //    int[] convertedArr;
                 
             //магия
             
 
 
-            return convertedArr;
-        }
+            //return convertedArr;
+        //}
     }
 }

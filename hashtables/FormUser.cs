@@ -15,12 +15,10 @@ namespace hashtables
         public FormUser()
         {
             InitializeComponent();
+            labelLoginCount.Text = FormLogin.currentUser.login;
+            labelHPCount.Text = Convert.ToString(FormLogin.currentUser.hp);
         }
-        //случайно создалось, не трогать
-        private void labelBaseAtc_Click(object sender, EventArgs e)
-        {
-
-        }
+       
 
         private void buttonOK_Click(object sender, EventArgs e)
         {
@@ -28,5 +26,7 @@ namespace hashtables
             FormStart formStart = new FormStart();
             formStart.Show();
         }
+
+        
     }
 }
