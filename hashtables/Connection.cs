@@ -100,8 +100,6 @@ namespace hashtables
             string sql = "SELECT password FROM User WHERE login ='" + login + "';"; //проверить названия колонок в таблице
             MySqlCommand command = new MySqlCommand(sql, conn);
 
-            
-
             if (pass == command.ExecuteScalar().ToString())
             {
                 return true;

@@ -118,11 +118,6 @@
     <Compile Include="FormStartQuest.Designer.cs">
       <DependentUpon>FormStartQuest.cs</DependentUpon>
     </Compile>
-    <Compile Include="userInfoDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>userInfoDataSet.xsd</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="FormAtackFort.resx">
       <DependentUpon>FormAtackFort.cs</DependentUpon>
     </EmbeddedResource>
@@ -155,17 +150,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="userInfoDataSet.xsc">
-      <DependentUpon>userInfoDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="userInfoDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>userInfoDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="userInfoDataSet.xss">
-      <DependentUpon>userInfoDataSet.xsd</DependentUpon>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
@@ -185,13 +169,6 @@
     <Content Include="Properties\user_info_log.ldf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>user_info.mdf</DependentUpon>
-    </Content>
-    <Content Include="userInfo.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="userInfo_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <DependentUpon>userInfo.mdf</DependentUpon>
     </Content>
   </ItemGroup>
   <ItemGroup>

@@ -65,14 +65,21 @@ namespace hashtables
             }
             else if (login != null && password != null)
             {
-                currentUser.login = login;
-                Console.WriteLine("login:" + login + "  " + "password:" + password);
+                if (Connection.login(login, password))
+                {
+                    currentUser.login = login;
+                    Console.WriteLine("login:" + login + "  " + "password:" + password);
 
-                FormLogin formLogin = new FormLogin();
-                formLogin.Hide();
+                    FormLogin formLogin = new FormLogin();
+                    formLogin.Hide();
 
-                FormStart formStart = new FormStart();
-                formStart.Show();
+                    FormStart formStart = new FormStart();
+                    formStart.Show();
+                }
+                else
+                {
+                    Console.WriteLine("Upps...");
+                }
             }
 
 
