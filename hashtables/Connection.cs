@@ -9,6 +9,8 @@ namespace hashtables
 {
     class Connection
     {
+        static internal User currentUser = new User();
+
         public static MySqlConnection GetDBConnection()
         {
             string datasource = "104.248.19.220";
@@ -91,6 +93,7 @@ namespace hashtables
         }
 
 
+
         //Возвращает бул тру если логин и парль правильные
         public static bool login(string login, string pass)
         {
@@ -109,6 +112,25 @@ namespace hashtables
             return false;
         }
 
+        public static void insertUser(ref string login, ref string password)
+        {
+            MySqlConnection conn = GetDBConnection();
+            conn.Open();
+
+           string sql = "INSERT INTO User VALUES ("+ login + ", '" + password + "','" + currentUser.level + "','" + currentUser.hp + "', '" + currentUser.atack + "', '" + currentUser.def + "', '" + currentUser.itemsInHand + "', '" + currentUser.itemsInBag + "')";
+            MySqlCommand command = new MySqlCommand(sql, conn);
+
+            if (command.ExecuteNonQuery() == 1)
+                System.Windows.Forms.MessageBox.Show("Запись успешно добавлена.");
+
+            MySqlDataReader reader = command.ExecuteReader();
+
+            while (reader.Read())
+            {
+                //По очереди присваивать строкам из внутренней бд значения reader[i]
+            }
+            conn.Close();
+        }
 
     }
 }
