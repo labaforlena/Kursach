@@ -1,1 +1,0 @@
-﻿INSERT INTO Users (login, password) VALUES ('gggg', 'eeeee')

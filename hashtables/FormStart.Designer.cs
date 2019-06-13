@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormStart));
             this.btnStartQuest = new System.Windows.Forms.Button();
             this.btnSeeUser = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -38,7 +37,7 @@
             // btnStartQuest
             // 
             this.btnStartQuest.BackColor = System.Drawing.Color.IndianRed;
-            this.btnStartQuest.Font = new System.Drawing.Font("Segoe Print", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnStartQuest.Font = new System.Drawing.Font("Palatino Linotype", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btnStartQuest.Location = new System.Drawing.Point(153, 250);
             this.btnStartQuest.Name = "btnStartQuest";
             this.btnStartQuest.Size = new System.Drawing.Size(137, 52);
@@ -50,7 +49,7 @@
             // btnSeeUser
             // 
             this.btnSeeUser.BackColor = System.Drawing.Color.IndianRed;
-            this.btnSeeUser.Font = new System.Drawing.Font("Segoe Print", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnSeeUser.Font = new System.Drawing.Font("Palatino Linotype", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btnSeeUser.Location = new System.Drawing.Point(153, 350);
             this.btnSeeUser.Name = "btnSeeUser";
             this.btnSeeUser.Size = new System.Drawing.Size(137, 48);
@@ -63,11 +62,11 @@
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.IndianRed;
-            this.label1.Font = new System.Drawing.Font("Segoe Print", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label1.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
-            this.label1.Location = new System.Drawing.Point(108, 129);
+            this.label1.Location = new System.Drawing.Point(96, 129);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(231, 52);
+            this.label1.Size = new System.Drawing.Size(265, 52);
             this.label1.TabIndex = 2;
             this.label1.Text = "So, here you come, stranger.\r\nWanna have some fun?";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -75,7 +74,7 @@
             // button1
             // 
             this.button1.BackColor = System.Drawing.Color.IndianRed;
-            this.button1.Font = new System.Drawing.Font("Segoe Print", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button1.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button1.Location = new System.Drawing.Point(153, 443);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(137, 48);
@@ -88,7 +87,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackgroundImage = global::hashtables.Properties.Resources.Start;
             this.ClientSize = new System.Drawing.Size(466, 562);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label1);
@@ -96,6 +95,7 @@
             this.Controls.Add(this.btnStartQuest);
             this.DoubleBuffered = true;
             this.Name = "FormStart";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Dungeons&Windows Forms ";
             this.ResumeLayout(false);
             this.PerformLayout();

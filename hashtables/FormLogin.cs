@@ -9,6 +9,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Timers;
+
 
 namespace hashtables
 {
@@ -17,27 +19,46 @@ namespace hashtables
         public FormLogin()
         {
             InitializeComponent();
-
+            this.ActiveControl = textBoxLogin;
         }
 
-        public static string dbUsersPath = "C:\\Users\\Helena\\Documents\\GitHub\\Kursach\\hashtables\\userInfo.mdf";
-        public static string dbUsersConnectionString = "Data Source = " + dbUsersPath;
+        //public static string dbUsersPath = "C:\\Users\\Helena\\Documents\\GitHub\\Kursach\\hashtables\\userInfo.mdf";
+        //public static string dbUsersConnectionString = "Data Source = " + dbUsersPath;
 
         static internal User currentUser = new User();
         string login;
         string password;
 
-        Dictionary<string, string> new_user = new Dictionary<string, string>();
-        
+        static internal Item currentItem = new Item();
 
+
+        Dictionary<string, string> new_user = new Dictionary<string, string>();
+
+        
         private void btnEnter_Click(object sender, EventArgs e)
         {
+            SetTimer();
+
             if (login == null)
             {
+                DialogResult result = MessageBox.Show(
+                   "pls enter login",
+                   "Сообщение",
+                   MessageBoxButtons.OK,
+                   MessageBoxIcon.Warning,
+                   MessageBoxDefaultButton.Button1,
+                   MessageBoxOptions.DefaultDesktopOnly);
+
+                if (result == DialogResult.OK)
+                {
+                    textBoxLogin.BackColor = Color.Red;
+                }
+
                 Console.WriteLine("pls enter login");
             }
             else if (login != null && password == null)
             {
+                MessageBox.Show("Please enter password");
                 Console.WriteLine("pls enter paswrd");
 
             }
@@ -45,8 +66,8 @@ namespace hashtables
             {
                 if (Connection.login(login, password))
                 {
-                    currentUser.login = login;
-                    
+                    currentUser = Connection.getFullDB(login);
+
                     Console.WriteLine("login:" + login + "  " + "password:" + password);
 
                     Hide();
@@ -62,20 +83,13 @@ namespace hashtables
                 }
                 else
                 {
+                    MessageBox.Show("Upps...");
+
                     Console.WriteLine("Upps...");
                 }
             }
 
-
-            /*
-            addUser(ref new_user, login, password);
-            FormUser formUser = new FormUser();
-            formUser.labelLoginCount.Text = login;
-            
-              */
-
         }
-
 
         private void textBoxLogin_TextChanged(object sender, EventArgs e)
         {
@@ -91,8 +105,39 @@ namespace hashtables
         private void btnExit_Click(object sender, EventArgs e)
         {
             Close();
+            Application.Exit();
         }
 
+        private void btnRegister_Click(object sender, EventArgs e)
+        {
+            if (login != null && password != null)
+            {
+                Connection.insertUser(ref login, ref password);
+            }
+           
+        }
+
+        private static void SetTimer()
+        {
+            // Create a timer with a two second interval.
+            System.Timers.Timer aTimer = new System.Timers.Timer(90000);//3/5 min in milisec
+            // Hook up the Elapsed event for the timer. 
+            aTimer.Elapsed += OnTimedEvent;
+            aTimer.AutoReset = true;
+            aTimer.Enabled = true;
+        }
+
+        private static void OnTimedEvent(Object source, ElapsedEventArgs e)
+        {
+            while (FormLogin.currentUser.stamina < FormLogin.currentUser.maxStamina)
+            {
+                FormLogin.currentUser.stamina = FormLogin.currentUser.stamina+1;
+                Connection.updDB();
+            }
+            MessageBox.Show("Stamina refreshed. Go and fight!");       
+            Console.WriteLine("stamina refreshed",
+                              e.SignalTime);
+        }
     }
     
 }

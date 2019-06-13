@@ -17,47 +17,47 @@ namespace hashtables
             InitializeComponent();
         }
 
-
-        int complexity;
-        int[] levelIDs;
-
-        public int[] generateDungeon(int playerLevel, int hardness)
+        public void generateDungeon(int complexity)
         {
-            Random rand = new Random();
+            if (FormLogin.currentUser.stamina > 0)
+            {
+                Random rand = new Random();
+                int id = rand.Next(1, 28);
+                Dungeon current = Connection.GetDungeon(id);
+                current.complexity = complexity;
 
-            int formula = (playerLevel % 3) + hardness + 3;//формула на количество уровней
+                FormLogin.currentUser.stamina--;
 
-            int[] levelIDs = new int[formula];//создание массива
-
-            for (int i = 0; i < levelIDs.Length; i++)
-            {//назначаем каждому уровню айди
-                do
-                {
-                    levelIDs[i] = rand.Next(); //в параметр некст нужно вставить колличество вариантов
-                } while (Array.Exists(levelIDs, element => element == levelIDs[i]));//проверка на повторы
-
+                FormQuest formQuest = new FormQuest(current);
+                formQuest.Show();
             }
-
-            return levelIDs;
-            //в таблице квестов будет айди, текст квестика, тип: монстр/развилка/загадка, в зависимости от типа будут разные кнопки                                             
+            else {
+                DialogResult result = MessageBox.Show(
+                  "You are tired. Pls sleep, for God's sake",
+                  " ",
+                  MessageBoxButtons.OK,
+                  MessageBoxIcon.Warning,
+                  MessageBoxDefaultButton.Button1,
+                  MessageBoxOptions.DefaultDesktopOnly);
+                              
+            }
         }
-        //тут только предметы в подземелье
+
+       
         private void btnEasy_Click(object sender, EventArgs e)
         {
-            complexity = 1;
-            int[] levelIDs = generateDungeon(1/*Player llevel*/, complexity);
+            generateDungeon(1);
+
         }
         //предметы и монстры
         private void btnHard_Click(object sender, EventArgs e)
         {
-            complexity = 2;
-            int[] levelIDs = generateDungeon(1/*Player llevel*/, complexity);
+            generateDungeon(3);
         }
 
         private void btnMedium_Click(object sender, EventArgs e)
         {
-            complexity = 3;
-            int[] levelIDs = generateDungeon(1/*Player llevel*/, complexity);
+            generateDungeon(2);
         }
         private void btnLeave_Click(object sender, EventArgs e)
         {
