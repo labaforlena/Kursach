@@ -138,30 +138,31 @@ namespace hashtables
                      
         //Выгружает всю инфу про перса из БД, вызывать при входе
         public static User getFullDB(string login)
-        {            
-                User current = new User();
-                MySqlConnection conn = GetDBConnection();
-                conn.Open();
+        {
+            User current = new User();
+            MySqlConnection conn = GetDBConnection();
+            conn.Open();
 
-                string sql = "SELECT * FROM User WHERE login ='" + login + "';"; //проверить названия колонок в таблице
-                MySqlCommand command = new MySqlCommand(sql, conn);
+            string sql = "SELECT * FROM User WHERE login ='" + login + "';"; //проверить названия колонок в таблице
+            MySqlCommand command = new MySqlCommand(sql, conn);
 
-                MySqlDataReader reader = command.ExecuteReader();
+            MySqlDataReader reader = command.ExecuteReader();
             List<int> itemsIdInBag = new List<int>();
             List<int> itemsIdInHand = new List<int>();
                 
-                while (reader.Read())
-                {
-                    current.login = reader[1].ToString();
-                    current.level = Convert.ToInt32(reader[3]);
-                    current.money = Convert.ToInt32(reader[4]);
-                    current.atack = Convert.ToInt32(reader[5]);
-                    current.def = Convert.ToInt32(reader[6]);
-                    itemsIdInHand = JSONParser.jsonToIntArr(reader[7]).ToList<int>();
-                    itemsIdInBag = JSONParser.jsonToIntArr(reader[8]).ToList<int>();
-                    current.attackFort = Convert.ToBoolean(reader[9]);
+            while (reader.Read())
+            {
+                current.login = reader[1].ToString();
+                current.level = Convert.ToInt32(reader[3]);
+                current.money = Convert.ToInt32(reader[4]);
+                current.atack = Convert.ToInt32(reader[5]);
+                current.def = Convert.ToInt32(reader[6]);
+                itemsIdInHand = JSONParser.jsonToIntArr(reader[7]).ToList<int>();
+                itemsIdInBag = JSONParser.jsonToIntArr(reader[8]).ToList<int>();
+                current.attackFort = Convert.ToBoolean(reader[9]);
                 current.stamina = Convert.ToInt32(reader[10]);
                 current.exp = Convert.ToInt32(reader[11]);
+                current.maxStamina = Convert.ToInt32(reader[12]);
                 }
                 conn.Close();
             current.itemsInBag = getItemsHeld(itemsIdInBag);

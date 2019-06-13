@@ -67,6 +67,8 @@ namespace hashtables
             {
                 Close();
                 Connection.updDB();
+                FormComplexity formComplexity = new FormComplexity();
+                formComplexity.Show();
             }
 
         }
@@ -102,7 +104,8 @@ namespace hashtables
             {
                 Close();
                 Connection.updDB();
-
+                FormComplexity formComplexity = new FormComplexity();
+                formComplexity.Show();
             }
         }
 
@@ -133,7 +136,8 @@ namespace hashtables
                 {
                     Close();
                     Connection.updDB();
-
+                    FormComplexity formComplexity = new FormComplexity();
+                    formComplexity.Show();
                 }
             }
             else
@@ -150,7 +154,8 @@ namespace hashtables
                 {
                     Close();
                     Connection.updDB();
-
+                    FormComplexity formComplexity = new FormComplexity();
+                    formComplexity.Show();
                 }
             }
         }
@@ -176,7 +181,8 @@ namespace hashtables
             {
                 Close();
                 Connection.updDB();
-
+                FormComplexity formComplexity = new FormComplexity();
+                formComplexity.Show();
             }
         }
 
@@ -198,7 +204,8 @@ namespace hashtables
             {
                 Close();
                 Connection.updDB();
-
+                FormComplexity formComplexity = new FormComplexity();
+                formComplexity.Show();
             }
         }
     }

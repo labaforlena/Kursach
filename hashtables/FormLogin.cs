@@ -37,7 +37,7 @@ namespace hashtables
         
         private void btnEnter_Click(object sender, EventArgs e)
         {
-            SetTimer();
+            
 
             if (login == null)
             {
@@ -69,7 +69,7 @@ namespace hashtables
                     currentUser = Connection.getFullDB(login);
 
                     Console.WriteLine("login:" + login + "  " + "password:" + password);
-
+                    SetTimer();
                     Hide();
 
                     FormStart formStart = new FormStart();
@@ -104,7 +104,6 @@ namespace hashtables
 
         private void btnExit_Click(object sender, EventArgs e)
         {
-            Close();
             Application.Exit();
         }
 
@@ -120,7 +119,7 @@ namespace hashtables
         private static void SetTimer()
         {
             // Create a timer with a two second interval.
-            System.Timers.Timer aTimer = new System.Timers.Timer(90000);//3/5 min in milisec
+            System.Timers.Timer aTimer = new System.Timers.Timer(9000);//3/5 min in milisec
             // Hook up the Elapsed event for the timer. 
             aTimer.Elapsed += OnTimedEvent;
             aTimer.AutoReset = true;
@@ -129,14 +128,15 @@ namespace hashtables
 
         private static void OnTimedEvent(Object source, ElapsedEventArgs e)
         {
-            while (FormLogin.currentUser.stamina < FormLogin.currentUser.maxStamina)
+            if(FormLogin.currentUser.stamina < FormLogin.currentUser.maxStamina)
             {
-                FormLogin.currentUser.stamina = FormLogin.currentUser.stamina+1;
+                FormLogin.currentUser.stamina++;
                 Connection.updDB();
+                MessageBox.Show("Stamina refreshed. Go and fight!");       
+                Console.WriteLine("stamina refreshed",
+                                  e.SignalTime);
             }
-            MessageBox.Show("Stamina refreshed. Go and fight!");       
-            Console.WriteLine("stamina refreshed",
-                              e.SignalTime);
+            
         }
     }
     

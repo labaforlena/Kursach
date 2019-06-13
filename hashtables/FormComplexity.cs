@@ -28,6 +28,7 @@ namespace hashtables
 
                 FormLogin.currentUser.stamina--;
 
+                Close();
                 FormQuest formQuest = new FormQuest(current);
                 formQuest.Show();
             }
